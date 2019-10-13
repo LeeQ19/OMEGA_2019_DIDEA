@@ -12,7 +12,7 @@ res.test1$eff
 res.test1$xslack
 
 # Test 2
-data.test2 <- array(c(1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 1, 1, 2, 2, 2, 2, 1, 1), c(2, 3, 3))
+data.test2 <- array(c(1, 2, 1, 2, 1, 1, 4, 3, 4, 3, 1, 1), c(2, 3, 2))
 data.test2
 id.x <- c(1:2)
 id.y <- c(3)
