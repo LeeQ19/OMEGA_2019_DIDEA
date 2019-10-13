@@ -1,11 +1,23 @@
 source("didea.R")
 
-df.f.2d <- read.csv(url("http://bit.ly/RevisedFire4data"),   header = T)
-df.f.3d <- simplify2array(by(df.f.2d[, -c(1, 11)], df.f.2d$Year, as.matrix))
-id.t <- c(1)
-id.x <- c(2:4)
-id.y <- c(5:6)
-rts   <- "crs"
-ori <- "i"
+# Test 1
+data.test1 <- array(c(1, 1, 2, 2, 2, 1, 2, 1, 2, 2, 1, 1, 1, 1, 2), c(5, 3))
+data.test1
+id.x <- c(1:2)
+id.y <- c(3)
+rts  <- "crs"
+ori  <- "i"
+res.test1 <- dm.dea(data.test1[, id.x], data.test1[, id.y], rts = rts, orientation = ori)
+res.test1$eff
+res.test1$xslack
 
-results <- didea(df.f.3d[, id.x, ], df.f.3d[, id.y, ], df.f.3d[, id.y, ] * 1.1, rts = rts, orientation = ori)
+# Test 2
+data.test2 <- array(c(1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 1, 1, 2, 2, 2, 2, 1, 1), c(2, 3, 3))
+data.test2
+id.x <- c(1:2)
+id.y <- c(3)
+rts  <- "crs"
+ori  <- "i"
+
+res.test2 <- didea(data.test2[, id.x, ], data.test2[, id.y, ], data.test2[, id.y, ] * 2, rts = rts, orientation = ori)
+abind(res.test2$alpha, res.test2$beta, along = 2)
